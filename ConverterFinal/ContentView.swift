@@ -60,7 +60,7 @@ struct ContentView: View {
                         .focused($inputIsFocused)
                 }
                 
-                
+                //Der Picker verwendet den Selection Wert um sich den entsprechenden Wert aus der von ForEach erstellten Liste rauszupicken und darzustellen.
                 Picker("Conversion", selection: $selectedUnits) {
                     ForEach(0..<conversions.count, id: \.self) {
                         Text(conversions[$0])
