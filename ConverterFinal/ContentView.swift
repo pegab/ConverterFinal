@@ -7,6 +7,20 @@
 
 import SwiftUI
 
+struct Title: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .font(.largeTitle)
+            .foregroundStyle(.blue)
+    }
+}
+
+extension View {
+    func titleStyle() -> some View {
+        modifier(Title())
+    }
+}
+
 struct ContentView: View {
     
     @State private var input = 100.0
@@ -54,10 +68,10 @@ struct ContentView: View {
             
             Form {
                 
-                Section("Amount to convert") {
+                Section("Amount to convert"){
                     TextField("Amount", value: $input, format: .number)
                         .keyboardType(.numbersAndPunctuation)
-                        .focused($inputIsFocused)
+                        .focused($inputIsFocused).titleStyle()
                 }
                 
                 //Der Picker verwendet den Selection Wert um sich den entsprechenden Wert aus der von ForEach erstellten Liste rauszupicken und darzustellen.
@@ -84,7 +98,7 @@ struct ContentView: View {
                 
                 
                 Section("Result") {
-                    Text(result)
+                    Text(result).titleStyle()
                 }
                 
                 
